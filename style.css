@@ -1,0 +1,91 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow-y: hidden;
+}
+.game-container {
+  position: relative;
+  width: 800px;
+  height: 100vh;
+  margin: 0 auto;
+}
+.road-container {
+  position: absolute;
+  margin: 0 auto;
+  display: flex;
+  inset: 0;
+  z-index: -2;
+}
+.road {
+  position: absolute;
+  display: block;
+  width: 400px;
+  height: 100%;
+  object-fit: cover;
+}
+#road-1 {
+  top: 0;
+  left: 0;
+}
+#road-2 {
+  top: 0;
+  right: 0;
+  transform: scaleX(-1);
+}
+#player-car {
+  transform: rotate(270deg);
+  width: 150px;
+  position: absolute;
+  display: none;
+  bottom: 10%;
+  left: 320px;
+}
+.random-car {
+  transform: rotate(90deg);
+  width: 150px;
+  position: absolute;
+}
+#random-car-1 {
+  left: 90px;
+}
+#random-car-2 {
+  left: 240px;
+  transform: rotate(270deg);
+}
+#random-car-3 {
+  left: 400px;
+}
+#random-car-4 {
+  left: 570px;
+}
+.message {
+  position: fixed;
+  z-index: 10;
+  height: 10vh;
+  font-size: 10vh;
+  font-weight: 100;
+  color: rgb(255, 238, 0);
+  bottom: 12vh;
+  left: 24vw;
+  text-align: center;
+}
+.score {
+  top: 0;
+  left: 0;
+}
+.highest-score,
+.score {
+  position: fixed;
+  z-index: 10;
+  height: 10vh;
+  font-size: 10vh;
+  font-weight: 100;
+  color: goldenrod;
+}
+
+.score_val {
+  color: gold;
+}
