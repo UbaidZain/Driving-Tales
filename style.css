@@ -49,17 +49,17 @@ body {
   position: absolute;
 }
 #random-car-1 {
-  left: 90px;
+  /* left: 90px; */
 }
 #random-car-2 {
-  left: 240px;
+  /* left: 240px; */
   transform: rotate(270deg);
 }
 #random-car-3 {
-  left: 400px;
+  /* left: 400px; */
 }
 #random-car-4 {
-  left: 570px;
+  /* left: 570px; */
 }
 .message {
   position: fixed;
