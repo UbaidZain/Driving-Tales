@@ -22,6 +22,7 @@ let score = 0;
 let stopInterval;
 let randomCars_top = 0;
 let isGameOver = false;
+let currentlyPlaying = false;
 const carImages = ["random-car-1.svg", "random-car-2.png", "random-car-3.svg"];
 const randomPositions = [
   [3, 2, 1, 4],
@@ -35,15 +36,40 @@ document.addEventListener("keydown", startGame);
 
 // Functions
 createRoads();
+function defaultGame() {
+  cars.forEach((carObj) => {
+    carObj.car.remove();
+  });
+  cars = [];
 
+  coinArray.forEach((coinObj) => {
+    coinObj.coin.remove();
+  });
+  coinArray = [];
+
+  playerCar.style.display = "block";
+  playerCar_left = 320;
+  playerCar_top = 490;
+  playerCar.style.left = playerCar_left + "px";
+  playerCar.style.top = playerCar_top + "px";
+  message.innerHTML = "";
+  scoreBoard.innerHTML = "";
+  rightTime;
+  leftTime;
+  moveCarsTime;
+  moveCoinsTime;
+  moveRoadsTime;
+  createCarsTime;
+  createCoinsTime;
+  score = 0;
+  stopInterval;
+  randomCars_top = 0;
+  currentlyPlaying = true;
+  isGameOver = false;
+}
 function startGame(e) {
-  if (e.key === "Enter" && !isGameOver) {
-    playerCar.style.display = "block";
-    playerCar_left = 320;
-    playerCar_top = 490;
-    playerCar.style.left = playerCar_left + "px";
-    playerCar.style.top = playerCar_top + "px";
-    message.innerHTML = "";
+  if (e.key === "Enter" && !currentlyPlaying) {
+    defaultGame();
     moveRoads();
     createCars();
     carControl();
@@ -198,8 +224,9 @@ function moveCars() {
           playerCar_left <= carObj.left + 70 &&
           playerCar_left + 80 >= carObj.left
         ) {
-          stopMoving();
           isGameOver = true;
+
+          stopMoving();
           console.log(isGameOver);
         }
         if (carObj.top >= 800) {
@@ -246,6 +273,7 @@ function moveRight(e) {
     playerCar_left += 10;
     playerCar.style.left = playerCar_left + "px";
     if (playerCar_left >= 650) {
+      isGameOver = true;
       stopMoving();
     }
   }, 30);
@@ -258,13 +286,14 @@ function moveLeft(e) {
     playerCar_left -= 10;
     playerCar.style.left = playerCar_left + "px";
     if (playerCar_left <= 0) {
+      isGameOver = true;
       stopMoving();
     }
   }, 30);
 }
 function stopMoving(e) {
-  stopInterval = setInterval(() => {
-    console.log("Game ended");
+  // stopInterval = setInterval(() => {
+  if (isGameOver) {
     clearInterval(leftTime);
     clearInterval(rightTime);
     clearInterval(moveCarsTime);
@@ -272,6 +301,8 @@ function stopMoving(e) {
     clearInterval(createCoinsTime);
     clearInterval(moveCoinsTime);
     clearInterval(moveRoadsTime);
+    currentlyPlaying = false;
     message.innerHTML = "Game Over";
-  });
+  }
+  // });
 }
