@@ -16,51 +16,48 @@ body {
   position: absolute;
   margin: 0 auto;
   display: flex;
+  flex-direction: column-reverse;
   inset: 0;
   z-index: -2;
 }
 .road {
   position: absolute;
   display: block;
-  width: 400px;
-  height: 100%;
-  object-fit: cover;
+  width: 800px;
+  height: 641px;
+  display: flex;
 }
-#road-1 {
+#road-1,
+#road-2 {
   top: 0;
+  object-fit: cover;
+
+  width: 400px;
+}
+
+#road-1 {
   left: 0;
 }
 #road-2 {
-  top: 0;
   right: 0;
   transform: scaleX(-1);
 }
 #player-car {
   transform: rotate(270deg);
-  width: 150px;
+  width: 200px;
   position: absolute;
   display: none;
-  bottom: 10%;
-  left: 320px;
+  /* bottom: 10%; */
 }
 .random-car {
   transform: rotate(90deg);
-  width: 150px;
+  width: 200px;
   position: absolute;
 }
-#random-car-1 {
-  /* left: 90px; */
-}
 #random-car-2 {
-  /* left: 240px; */
   transform: rotate(270deg);
 }
-#random-car-3 {
-  /* left: 400px; */
-}
-#random-car-4 {
-  /* left: 570px; */
-}
+
 .message {
   position: fixed;
   z-index: 10;
@@ -70,6 +67,7 @@ body {
   color: rgb(255, 238, 0);
   bottom: 12vh;
   left: 24vw;
+  width: 50vw;
   text-align: center;
 }
 .score {
@@ -88,4 +86,11 @@ body {
 
 .score_val {
   color: gold;
+}
+
+.gold-coin {
+  width: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
